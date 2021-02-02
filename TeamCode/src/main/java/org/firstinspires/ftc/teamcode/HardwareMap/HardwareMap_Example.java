@@ -57,7 +57,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 abstract public class HardwareMap_Example extends LinearOpMode
 {
     /* Public OpMode members. */
-    // NerdyNarwals: The Robot Parts need to be established here
+    // NerdyNarwhals: The Robot Parts need to be established here
     public DcMotor  leftFront   = null;
     public DcMotor  rightFront  = null;
     public DcMotor  leftBack   = null;
@@ -68,7 +68,7 @@ abstract public class HardwareMap_Example extends LinearOpMode
     HardwareMap hwMap           =  null;
 
     private ElapsedTime period  = new ElapsedTime();
-    /* CHAWKS: Call and declare the robot here */
+    /* NerdyNarwhals: Call and declare the robot here */
     private ElapsedTime     runtime = new ElapsedTime();
 
     /* Constructor */
@@ -76,6 +76,7 @@ abstract public class HardwareMap_Example extends LinearOpMode
 
     }
     // TODO: change Counts_per_motor_rev for your motors
+    // NerdyNarwhals - How do we do this?
     public static final double     COUNTS_PER_MOTOR_REV    = 288 ;  // NerdyNarwals
     public static final double     DRIVE_GEAR_REDUCTION    = 1.0;     // This is < 1.0 if geared UP
     public static final double     WHEEL_DIAMETER_INCHES   = 3.5 ;     // For figuring circumference
@@ -99,39 +100,52 @@ abstract public class HardwareMap_Example extends LinearOpMode
 
         // Define and Initialize Motors
         /*
-            NerdyNarwals: The deviceName should ALWAYS ALWAYS ALWAYS
+            NerdyNarwhals: The deviceName should ALWAYS ALWAYS ALWAYS
                     match the part name to avoid confusion
          */
 
         // TODO: Here are two for the Back wheels - add for the Front Motors
+        // NerdyNarwhals - Done!
         leftBack = hwMap.get(DcMotor.class, "leftBack");
         rightBack = hwMap.get(DcMotor.class, "rightBack");
+        leftFront = hwMap.get(DcMotor.class, "leftFront");
+        rightFront = hwMap.get(DcMotor.class, "rightFront");
 
 
         // Set Direction/Motion for Motors
         /*
-            NerdyNarwals: Why are we reversing the Right Wheels?
+            NerdyNarwhals: Why are we reversing the Right Wheels?
          */
 
         // TODO: Here are two for the Back wheels - add for the Front Motors
-        leftBack.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        rightBack.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        // NerdyNarwhals - Done!
+        leftBack.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightBack.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightFront.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
+        // we are using AndyMark motors so we switched the directions
 
 
         // Set all motors to ZERO! power
         /*
-            NerdyNarwals: Why do we set the power to zero?
+            NerdyNarwhals: Why do we set the power to zero?
+            We are setting the power to zero because this is initialization (init), and we don't
+            want the wheels running or the robot in motion at all
          */
 
         // TODO: Here are two for the Back wheels - add for the Front Motors
+        // NerdyNarwhals - Done!
         leftBack.setPower(0);
         rightBack.setPower(0);
+        leftFront.setPower(0);
+        rightFront.setPower(0);
 
         // Set all motors to run without encoders.
         /*
              Encoder Exercise!
          */
         // TODO: Here are two for the Back wheels - add for the Front Motors
+        // NerdyNarwhals - Done!
 
         leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -139,6 +153,13 @@ abstract public class HardwareMap_Example extends LinearOpMode
         rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
     /*
@@ -153,6 +174,7 @@ abstract public class HardwareMap_Example extends LinearOpMode
      */
 
     // TODO: Here are two for the Back wheels - add for the Front Motors
+    // NerdyNarwhals - we didn't get to this to-do at our Thursday (1/28) meeting
 
     public void encoderDrive(double speed,
                              double leftInches, double rightInches,
